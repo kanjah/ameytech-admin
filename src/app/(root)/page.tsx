@@ -1,9 +1,24 @@
-import { UserButton } from "@clerk/nextjs";
+"use client";
+
+import { Modal } from "@/components/ui/modal";
+import { useStoreModal } from "@../../../hooks/use-store-model";
+import { useEffect } from "react";
+
 
 const SetupPage = () => {
+  // triger the modal to open in this page
+  const onOpen = useStoreModal((state) => state.onOpen);
+  const isOpen = useStoreModal((state) => state.isOpen);
+
+  useEffect(() => {
+    if(!isOpen) {
+      onOpen();
+    }
+  },[isOpen, onOpen])
+
   return (
-    <div className="h-screen">
-      <UserButton afterSignOutUrl="/"/>
+    <div className="p-4">
+      Root page
     </div>
   );
 }
