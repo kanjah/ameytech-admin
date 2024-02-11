@@ -26,6 +26,7 @@ export default function RootLayout({
           <ToasterProvider />
           {/* from providers>modal-provider */}
           <ModalProvider />
+          {/* this points to root/layout.tsx */}
           {children}
           </ClerkProvider>
           
