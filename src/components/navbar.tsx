@@ -5,22 +5,22 @@ import { redirect } from "next/navigation";
 import prismadb from "@/lib/prismadb";
 
 const Navbar = async () => {
-    // get current store
-    const {userId} = auth(); //authenticate from clerk
+  // get current store
+  const { userId } = auth(); //authenticate from clerk
 
-    //check if logged in
-    if(!userId){
-        redirect('/');
-    }
+  //check if logged in
+  if (!userId) {
+    redirect("/");
+  }
 
-    //get store from db
-    const stores = await prismadb.store.findMany({
-        where:{
-            userId,
-        }
-    })
-    return (
-        <div className="border-b">
+  //get store from db
+  const stores = await prismadb.store.findMany({
+    where: {
+      userId,
+    },
+  });
+  return (
+    <div className="border-b">
       <div className="flex h-16 items-center px-4">
         <StoreSwitcher items={stores} />
 
@@ -32,7 +32,7 @@ const Navbar = async () => {
         </div>
       </div>
     </div>
-      );
-}
- 
-export default Navbar ;
+  );
+};
+
+export default Navbar;
